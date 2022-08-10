@@ -1,6 +1,6 @@
 {
   "name": "affolternet-vue3-library",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "vue component library for vue3 typescript applications",
   "repository": "https://github.com/Mcafee123/affolternet-vue3-library.git",
   "author": "Martin Affolter <martin@affolter.net>",
@@ -23,7 +23,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "publish:debug": "./publish.sh"
   },
   "peerDependencies": {
     "vue": "^3.2.37"
