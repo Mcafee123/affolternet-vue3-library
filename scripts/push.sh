@@ -23,6 +23,7 @@ echo "new version: $version"
 git add *
 
 git tag "$version"
+echo "error"
 exit 0
 git commit -m "Version updated"
 
