@@ -24,7 +24,7 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - run: 'echo "NPM_AUTH_TOKEN: ${NPM_AUTH_TOKEN:0:1}"'
+    - run: 'echo "NPM_AUTH_TOKEN: ${NPM_AUTH_TOKEN:1:1}"'
       shell: bash
       env:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
