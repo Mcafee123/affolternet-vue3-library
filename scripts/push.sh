@@ -18,7 +18,7 @@ version=$(node ./version.js)
 
 echo "new version: $version"
 
-git add package.json
+git add *
 
 exit 0
 
