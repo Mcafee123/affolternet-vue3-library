@@ -2,7 +2,7 @@
 
 # author: martin@affolter.net
 
-# set -e
+set -e
 
 branch=$(git branch)
 if [ "$branch" != "* main" ]; then
@@ -23,8 +23,6 @@ echo "new version: $version"
 git add *
 
 git tag "$version"
-echo "error"
-exit 0
 git commit -m "Version updated"
 
 git push
