@@ -5,7 +5,7 @@ name: Node.js PUBLISH
 
 on:
   push:
-    branches: [ "main1" ]
+    branches: [ "main" ]
 
 jobs:
   call_build:
@@ -27,6 +27,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: get build-output artifact
+      uses: actions/download-artifact@master
+      with:
+        name: build-output
+        path: dist/
     - run: npm run pub
       env:
         # Use a token to publish to NPM. See below for how to set it up
