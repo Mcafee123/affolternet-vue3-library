@@ -22,9 +22,9 @@ echo "new version: $version"
 
 pushd .
 cd ..
-git tag "$version"
 git commit package.json -m "Version updated"
+git tag "$version"
 
 git push
-git push origin --tags
+git push --tags
 popd
