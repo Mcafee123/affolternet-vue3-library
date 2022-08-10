@@ -22,7 +22,7 @@ echo "new version: $version"
 
 pushd .
 cd ..
-git commit package.json -m "Version updated"
+git commit package.json -m "version updated"
 git tag "$version"
 
 git push
