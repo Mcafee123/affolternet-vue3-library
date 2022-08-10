@@ -1,14 +1,17 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Node.js PUBLISH
 
-on:
-  push:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
 
 jobs:
-  build:
+  call_build:
+    uses: ./.github/workflows/node.build.js.yml
+  publish:
+    needs: call_build
 
     runs-on: ubuntu-latest
 
