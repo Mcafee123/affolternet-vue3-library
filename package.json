@@ -23,7 +23,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "pub": "npm publish --access public",
     "preview": "vite preview"
   },
   "peerDependencies": {
