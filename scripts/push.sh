@@ -2,6 +2,8 @@
 
 # author: martin@affolter.net
 
+set -e
+
 branch=$(git branch)
 if [ "$branch" != "* main" ]; then
   echo "not on main branch. $branch"
@@ -19,6 +21,7 @@ version=$(node ./version.js)
 echo "new version: $version"
 
 git add *
+
 git tag "$version"
 exit 0
 git commit -m "Version updated"
