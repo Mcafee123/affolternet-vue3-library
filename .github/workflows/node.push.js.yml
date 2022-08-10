@@ -11,8 +11,6 @@ jobs:
   call_build:
     uses: ./.github/workflows/node.build.js.yml
   publish:
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     needs: call_build
 
