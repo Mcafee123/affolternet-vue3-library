@@ -2,7 +2,7 @@
 
 # author: martin@affolter.net
 
-set -e
+# set -e
 
 branch=$(git branch)
 if [ "$branch" != "* main" ]; then
