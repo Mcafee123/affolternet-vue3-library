@@ -1,28 +1,40 @@
 {
   "name": "affolternet-vue3-library",
-  "version": "0.0.1",
-  "description": "",
-  "main": "dist/library.js",
-  "module": "dist/library.mjs",
+  "version": "0.0.23",
+  "description": "vue component library for vue3 typescript applications",
+  "repository": "https://github.com/Mcafee123/affolternet-vue3-library.git",
+  "author": "Martin Affolter <martin@affolter.net>",
+  "license": "MIT",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist/*"
+    "dist"
   ],
-  "scripts": {
-    "build": "rollup -c",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+  "main": "./dist/affolternet-vue3-library.umd.js",
+  "module": "./dist/affolternet-vue3-library.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/affolternet-vue3-library.es.js",
+      "require": "./dist/affolternet-vue3-library.umd.js"
+    }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "unpkg": "./dist/affolternet-vue3-library.umd.js",
+  "jsdelivr": "./dist/affolternet-vue3-library.umd.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "pub": "npm publish --access public",
+    "preview": "vite preview"
+  },
   "peerDependencies": {
-    "vue": "^3.2.21"
+    "vue": "^3.2.37"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.0",
     "pug": "^3.0.2",
-    "rollup": "^2.77.2",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-vue": "^6.0.0",
-    "vuepress": "^2.0.0-beta.49"
+    "sass": "^1.54.3",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0",
+    "vite-plugin-dts": "^1.4.1",
+    "vue-tsc": "^0.38.4"
   }
 }
