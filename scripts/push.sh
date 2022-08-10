@@ -20,7 +20,6 @@ echo "new version: $version"
 
 git add *
 git commit -m "Version updated"
-
 git tag "$version"
 git push
 git push origin --tags
