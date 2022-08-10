@@ -20,10 +20,8 @@ version=$(node ./version.js)
 
 echo "new version: $version"
 
-git add *
-
 git tag "$version"
-git commit -m "Version updated"
+git commit package.json -m "Version updated"
 
 git push
 git push origin --tags
