@@ -1,11 +1,15 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import LoaderView from '../views/LoaderView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    redirect: '/loader'
+  },
+  {
+    path: '/loader',
+    name: 'loader',
+    component: LoaderView
   }
 ]
 
