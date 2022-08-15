@@ -1,8 +1,8 @@
 <template lang="pug">
-router-view
 nav
-  router-link(to="/") Home | 
-  router-link(to="/loader") Loader
+  router-link(to="/loader") Loader | 
+  router-link(to="/toasts") Toasts | 
+router-view
 </template>
 
 <style lang="scss">

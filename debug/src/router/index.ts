@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import LoaderView from '../views/LoaderView.vue'
+import ToastsView from '../views/ToastsView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,6 +11,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/loader',
     name: 'loader',
     component: LoaderView
+  },
+  {
+    path: '/toasts',
+    name: 'toasts',
+    component: ToastsView
   }
 ]
 

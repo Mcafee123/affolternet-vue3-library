@@ -9,13 +9,14 @@ emptyDir(resolve(__dirname, 'types'))
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    // alias: [{ find: /^@\/(.+)/, replacement: resolve(__dirname, '$1') }]
     alias: {
       '@': resolve(__dirname),
       '@components': resolve(__dirname, 'src/components')
     }
   },
-  plugins: [vue(), dts()],
+  plugins: [vue(), dts({
+    
+  })],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),

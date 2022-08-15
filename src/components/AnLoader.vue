@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 
 import { computed, defineProps, PropType, ref } from 'vue'
-import { eventService, Handler } from '../services/EventService';
+import { eventService } from '../services/EventService';
 
 const props = defineProps({
   color: {
@@ -31,17 +31,17 @@ const props = defineProps({
 })
 const loaderVisible = ref<Boolean>(false);
 const sliderstyle = computed(() => `height:${props.height}px;visibility:${loaderVisible.value ? 'visible' : 'hidden'}`)
-const linestyle = `background: ${props.color}; height: ${props.height}px;`
-const overlayStyle = `background-color: rgba(0, 0, 0, ${props.overlayOpacity});`
+const linestyle = computed(() =>`background: ${props.color}; height: ${props.height}px;`)
+const overlayStyle = computed(() => `background-color: rgba(0, 0, 0, ${props.overlayOpacity});`)
 
 let loadersRunning = 0;
-const showLoader: Handler<unknown> = (e: unknown): void => {
+const showLoader = (): void => {
   loadersRunning += 1
   if (loadersRunning === 1) {
     loaderVisible.value = true
   }
 }
-const hideLoader: Handler<unknown> = (e: unknown): void => {
+const hideLoader = (): void => {
   if (loadersRunning > 0) {
     loadersRunning -= 1
   }
@@ -50,8 +50,8 @@ const hideLoader: Handler<unknown> = (e: unknown): void => {
   }
 }
 
-eventService.on('showLoader', showLoader)
-eventService.on('hideLoader', hideLoader)
+eventService.on(eventService.showLoaderKey, showLoader)
+eventService.on(eventService.hideLoaderKey, hideLoader)
 
 </script>
 
