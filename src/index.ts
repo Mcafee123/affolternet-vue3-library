@@ -8,6 +8,9 @@ export { eventService, EventService } from './services/EventService';
 export { loaderService, LoaderService } from './services/LoaderService';
 export { toastService, ToastService } from './services/ToastService';
 
+// types
+export type { AnIcon, ToastType, ToastParams } from './types';
+
 // export namespace services {
 //   export import loaderService = ls
 // }

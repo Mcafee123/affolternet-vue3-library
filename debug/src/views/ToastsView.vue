@@ -1,5 +1,5 @@
 <template lang="pug">
-link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css")
+link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css")
 an-toasts(
   :close-icon="{ class: 'fa-solid fa-xmark' }"
   error-classes="an-toast-default error top" 
@@ -19,7 +19,7 @@ button(@click="done") Done
 
 <script lang="ts" setup>
 
-import { toastService } from 'affolternet-vue3-library';
+import { toastService } from '../../../src/index';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const err = () => {

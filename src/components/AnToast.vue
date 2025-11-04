@@ -7,31 +7,18 @@
 
 <script lang="ts" setup>
 
-import { defineProps, PropType, ref } from 'vue'
+import { ref, withDefaults } from 'vue'
 import { eventService } from "../services/EventService";
-import { ToastParams, ToastType } from '../services/ToastService';
+import type { AnIcon, ToastParams, ToastType } from '../types';
 
-export type AnIcon = { class?: string, content?: string }
-
-const props = defineProps({
-  type: {
-    required: true,
-    type: String as PropType<ToastType>
-  },
-  classes: {
-    required: false,
-    type: String,
-    default: 'an-toast-default an-toast-layout-default bottom'
-  },
-  icon: {
-    required: false,
-    type: Object as PropType<AnIcon>
-  },
-  closeIcon: {
-    required: false,
-    type: Object as PropType<AnIcon>,
-    default: { content: 'X' }
-  }
+const props = withDefaults(defineProps<{
+  type: ToastType
+  classes?: string
+  icon?: AnIcon
+  closeIcon?: AnIcon
+}>(), {
+  classes: 'an-toast-default an-toast-layout-default bottom',
+  closeIcon: () => ({ content: 'X' })
 })
 
 const message = ref('')

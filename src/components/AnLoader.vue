@@ -1,38 +1,56 @@
 <template lang="pug">
-.an-overlay(v-if="showOverlay" v-show="loaderVisible" :style="overlayStyle")
-.an-slider(:style="sliderstyle")
-  .an-line(:style="linestyle")
-  .an-subline.an-inc(:style="linestyle")
-  .an-subline.an-dec(:style="linestyle")
+.an-overlay(v-if="showOverlay" v-show="loaderVisible" ref="overlayRef" :class="{ 'overlay-visible': loaderVisible }")
+.an-slider(ref="sliderRef" :class="{ 'slider-visible': loaderVisible }")
+  .an-line(ref="lineRef")
+  .an-subline.an-inc(ref="incRef")
+  .an-subline.an-dec(ref="decRef")
 </template>
 
 <script lang="ts" setup>
 
-import { computed, defineProps, PropType, ref } from 'vue'
+import { ref, withDefaults, watchEffect } from 'vue'
 import { eventService } from '../services/EventService';
 
-const props = defineProps({
-  color: {
-    type: String,
-    default: '#4a8df8'
-  },
-  height: {
-    type: Number,
-    default: 2
-  },
-  showOverlay: {
-    type: Boolean,
-    default: true
-  },
-  overlayOpacity: {
-    type: Number,
-    default: 0.4
+const props = withDefaults(defineProps<{
+  color?: string
+  height?: number
+  showOverlay?: boolean
+  overlayOpacity?: number
+}>(), {
+  color: '#4a8df8',
+  height: 2,
+  showOverlay: true,
+  overlayOpacity: 0.4
+})
+
+const loaderVisible = ref<Boolean>(false);
+const overlayRef = ref()
+const sliderRef = ref()
+const lineRef = ref()
+const incRef = ref()
+const decRef = ref()
+
+// Update CSS custom properties when props change
+watchEffect(() => {
+  if (overlayRef.value) {
+    overlayRef.value.style.setProperty('--overlay-opacity', props.overlayOpacity.toString());
+  }
+  if (sliderRef.value) {
+    sliderRef.value.style.setProperty('--loader-height', `${props.height}px`);
+  }
+  if (lineRef.value) {
+    lineRef.value.style.setProperty('--loader-color', props.color);
+    lineRef.value.style.setProperty('--loader-height', `${props.height}px`);
+  }
+  if (incRef.value) {
+    incRef.value.style.setProperty('--loader-color', props.color);
+    incRef.value.style.setProperty('--loader-height', `${props.height}px`);
+  }
+  if (decRef.value) {
+    decRef.value.style.setProperty('--loader-color', props.color);
+    decRef.value.style.setProperty('--loader-height', `${props.height}px`);
   }
 })
-const loaderVisible = ref<Boolean>(false);
-const sliderstyle = computed(() => `height:${props.height}px;visibility:${loaderVisible.value ? 'visible' : 'hidden'}`)
-const linestyle = computed(() =>`background: ${props.color}; height: ${props.height}px;`)
-const overlayStyle = computed(() => `background-color: rgba(0, 0, 0, ${props.overlayOpacity});`)
 
 let loadersRunning = 0;
 const showLoader = (): void => {
@@ -58,35 +76,49 @@ eventService.on(eventService.hideLoaderKey, hideLoader)
 <style lang="scss">
 
 .an-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
+  z-index: 9998;
+  background-color: rgba(0, 0, 0, var(--overlay-opacity, 0.4));
+}
+
+.an-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  z-index: 10;
-}
-
-.an-slider{
-  // position:absolute;
-  width:100%;
   overflow-x: hidden;
+  height: var(--loader-height, 2px);
+  visibility: hidden;
+  z-index: 9999;
+  
+  &.slider-visible {
+    visibility: visible;
+  }
 }
 
-.an-line{
-  position:absolute;
+.an-line {
+  position: absolute;
   opacity: 0.4;
-  background:#4a8df8;
-  width:150%;
+  background: var(--loader-color, #4a8df8);
+  height: var(--loader-height, 2px);
+  width: 150%;
 }
 
-.an-subline{
-  position:absolute;
-  background:#4a8df8;
+.an-subline {
+  position: absolute;
+  background: var(--loader-color, #4a8df8);
+  height: var(--loader-height, 2px);
 }
-.an-inc{
+
+.an-inc {
   animation: increase 2s infinite;
 }
-.an-dec{
+
+.an-dec {
   animation: decrease 2s 0.5s infinite;
 }
 
