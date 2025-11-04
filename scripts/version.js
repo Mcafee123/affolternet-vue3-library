@@ -1,6 +1,6 @@
  "use strict";
 
- const filesystem = require('./filesystem');
+const filesystem = require('./filesystem');
 
 const content = filesystem.readPackageFile();
 const json = JSON.parse(content);
