@@ -20,9 +20,9 @@
  "module": "./dist/affolternet-vue3-library.mjs",
  "exports": {
   ".": {
+   "types": "./dist/index.d.ts",
    "import": "./dist/affolternet-vue3-library.mjs",
-   "require": "./dist/affolternet-vue3-library.umd.js",
-   "types": "./dist/index.d.ts"
+   "require": "./dist/affolternet-vue3-library.umd.js"
   },
   "./css": "./dist/style.css"
  },
