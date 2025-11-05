@@ -2,7 +2,10 @@
  "name": "affolternet-vue3-library",
  "version": "0.1.1",
  "description": "vue component library for vue3 typescript applications",
- "repository": "https://github.com/Mcafee123/affolternet-vue3-library.git",
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/Mcafee123/affolternet-vue3-library.git"
+ },
  "author": "Martin Affolter <martin@affolter.net>",
  "license": "MIT",
  "types": "./dist/index.d.ts",
