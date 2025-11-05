@@ -9,7 +9,7 @@
  "author": "Martin Affolter <martin@affolter.net>",
  "license": "MIT",
  "types": "./dist/index.d.ts",
- "style": "./dist/style.css",
+ "style": "./dist/affolternet-vue3-library.css",
  "sideEffects": [
   "*.css"
  ],
@@ -24,7 +24,7 @@
    "import": "./dist/affolternet-vue3-library.mjs",
    "require": "./dist/affolternet-vue3-library.umd.js"
   },
-  "./css": "./dist/style.css"
+  "./css": "./dist/affolternet-vue3-library.css"
  },
  "unpkg": "./dist/affolternet-vue3-library.umd.js",
  "jsdelivr": "./dist/affolternet-vue3-library.umd.js",
